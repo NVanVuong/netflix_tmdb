@@ -1,13 +1,43 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "~swiper/css";
+@import "~swiper/css/pagination";
+@import "~swiper/css/scrollbar";
+
+@layer {
+  body {
+    @apply bg-black font-poppins;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.header-nav {
+  @apply fixed bottom-0 left-0 right-0 flex 
+        h-16 items-center justify-center
+          gap-x-14 bg-black bg-opacity-90
+          sm:gap-x-20 md:static md:gap-0 md:bg-inherit lg:ml-5;
+}
+
+.hero-slide {
+  @apply relative h-[calc(100vh-64px)] w-full bg-cover
+          bg-center bg-no-repeat before:absolute before:h-full
+          before:w-full before:bg-gradient-to-r before:from-black/80 before:content-[''] after:absolute after:bottom-0
+          after:left-0 after:h-[100px] after:w-full after:bg-gradient-to-t after:from-black after:to-transparent after:content-[''] md:h-screen;
+}
+
+.hero-slide .slide-content {
+  @apply absolute bottom-[10%] z-0 w-full px-4 md:bottom-[15%] md:px-12 lg:px-16;
+}
+
+.swiper-pagination {
+  @apply z-10;
+}
+.swiper-pagination-bullet {
+  @apply bg-gray-50 !important;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply bg-red-main !important;
 }
