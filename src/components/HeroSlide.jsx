@@ -10,7 +10,7 @@ import { mediaType } from "../api/tmdbApi";
 
 SwiperCore.use([Autoplay]);
 
-const HeroSlide = ({ onClickTrailer }) => {
+const HeroSlide = ({ setTrailer, setShowModal }) => {
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
 
@@ -54,8 +54,8 @@ const HeroSlide = ({ onClickTrailer }) => {
   }, []);
 
   const handleTrailerClick = (video) => {
-    onClickTrailer(video);
-    console.log(video);
+    setTrailer(video);
+    setShowModal(true);
   };
 
   const truncateString = (str, num) =>
