@@ -32,7 +32,7 @@
 }
 
 .detail {
-  @apply relative bg-cover bg-center bg-no-repeat px-4 pb-4 pt-24 after:absolute after:bottom-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t after:from-black after:to-black/70
+  @apply relative  bg-cover bg-center bg-no-repeat px-4 pb-4 pt-24 after:absolute after:bottom-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t after:from-black after:to-black/70
           after:content-[""] md:px-8;
 }
 
