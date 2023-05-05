@@ -55,6 +55,7 @@ const HeroSlide = ({ onClickTrailer }) => {
 
   const handleTrailerClick = (video) => {
     onClickTrailer(video);
+    console.log(video);
   };
 
   const truncateString = (str, num) =>
