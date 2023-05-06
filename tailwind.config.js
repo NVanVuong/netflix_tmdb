@@ -19,6 +19,9 @@ module.exports = {
         "dim-gray-hover": "#6d6d6e44",
         "white-hover": "#ffffffcf"
       },
+      screens: {
+        "xs": "460px"
+      },
     },
   },
   plugins: [

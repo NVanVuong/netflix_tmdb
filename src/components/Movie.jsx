@@ -1,26 +1,15 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState } from "react";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
-import tmdbApi from "../api/tmdbApi";
-import { mediaType } from "../api/tmdbApi";
 import { Link } from "react-router-dom";
 
 const Movie = ({ item, media }) => {
   const [like, setLike] = useState(false);
-  const [genres, setGenres] = useState([]);
-
-  useEffect(() => {
-    Promise.all([
-      tmdbApi.getGenres(mediaType.movie),
-      tmdbApi.getGenres(mediaType.tv),
-    ]).then(([movieResponse, tvResponse]) => {
-      const genres = [...movieResponse.data.genres, ...tvResponse.data.genres];
-      setGenres(genres);
-    });
-  }, []);
 
   return (
     <Link
-      to={`${media === "all" ? (media = item?.media_type) : media}/${item?.id}`}
+      to={`/${media === "all" ? (media = item?.media_type) : media}/${
+        item?.id
+      }`}
       className="relative m-1 inline-block w-[180px] cursor-pointer snap-center first:ml-0 sm:w-[200px] md:w-[240px] lg:w-[272px]"
     >
       <img
@@ -45,33 +34,14 @@ const Movie = ({ item, media }) => {
           <p className="mb-1.5 line-clamp-2 max-w-[85%] select-none whitespace-normal text-xs font-semibold md:line-clamp-none md:text-sm">
             {item?.title || item?.name}
           </p>
-          <div>
-            <div className="mb-1.5 flex select-none items-center text-xs text-light-gray">
-              <span>
-                {(item?.release_date || item?.first_air_date).substring(0, 4)}
-              </span>
-              <span className="ml-2 flex items-center justify-center gap-[2px] rounded border px-1 py-[2px] text-[10px] font-light ">
-                <FaStar />
-                {(item?.vote_average).toString().substring(0, 3)}
-              </span>
-            </div>
-            <div className="flex select-none items-center text-xs font-light">
-              {genres
-                .filter((genre) => item?.genre_ids.includes(genre.id))
-                .filter(
-                  (genre, index, self) =>
-                    self.findIndex((g) => g.name === genre.name) === index
-                )
-                .slice(0, 3)
-                .map((genre, index) => (
-                  <Fragment key={genre.id}>
-                    {index > 0 && <span className="text-xs"> &bull; </span>}
-                    <span className="mx-1 text-xs first:ml-0">
-                      {genre.name}
-                    </span>
-                  </Fragment>
-                ))}
-            </div>
+          <div className="flex select-none items-center text-xs text-light-gray">
+            <span>
+              {(item?.release_date || item?.first_air_date)?.substring(0, 4)}
+            </span>
+            <span className="ml-2 flex items-center justify-center gap-[2px] rounded border px-1 py-[2px] text-[10px] font-light ">
+              <FaStar />
+              {(item?.vote_average).toString().substring(0, 3)}
+            </span>
           </div>
         </div>
       </div>

@@ -51,5 +51,13 @@ const tmdbApi = {
     const url = `${mediaType[media]}/${id}/similar`
     return axiosClient.get(url, { params });
   },
+  getDiscover: (media, page, params = {}) => {
+    const url = `discover/${mediaType[media]}?&page=${page}`
+    return axiosClient.get(url, { params });
+  },
+  search: (media, keyword, page, params = {}) => {
+    const url = `search/${mediaType[media]}?&query=${keyword}&page=${page}`
+    return axiosClient.get(url, { params });
+  }
 }
 export default tmdbApi;

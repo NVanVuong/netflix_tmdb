@@ -4,7 +4,6 @@ import {
   House as Home,
   TelevisionSimple as TVShows,
   FilmSlate as Movies,
-  Video as NewAndPop,
 } from "@phosphor-icons/react";
 import netflixLogo from "../assets/netflix-icon.png";
 
@@ -12,22 +11,13 @@ const navLinks = [
   { content: "Home", path: "", icon: Home },
   { content: "TV Shows", path: "tv", icon: TVShows },
   { content: "Movies", path: "movie", icon: Movies },
-  { content: "New & Popular", path: "top-trending", icon: NewAndPop },
 ];
 
 const NavBar = () => {
   const [isSticky, setIsSticky] = useState(false);
 
-  // const handleClick = (e, id) => {
-  //   e.preventDefault();
-  //   const navbarHeight = 68;
-  //   const position =
-  //     id !== "home" ? document.getElementById(id).offsetTop - navbarHeight : 0;
-  //   window.scrollTo({ top: position, behavior: "smooth" });
-  // };
-
   useEffect(() => {
-    const handleScroll = () => setIsSticky(window.scrollY > 200);
+    const handleScroll = () => setIsSticky(window.scrollY > 100);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

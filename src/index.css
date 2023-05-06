@@ -16,7 +16,7 @@
 .header-nav {
   @apply fixed bottom-0 left-0 right-0 flex 
         h-16 items-center justify-center
-          gap-x-14 bg-black bg-opacity-90
+          gap-x-16 bg-black bg-opacity-90
           sm:gap-x-20 md:static md:gap-0 md:bg-inherit lg:ml-5;
 }
 

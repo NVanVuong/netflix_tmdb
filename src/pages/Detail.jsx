@@ -17,26 +17,17 @@ const Detail = ({ mediaType }) => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    getDetail();
-    getVideos();
-    getCredits();
+    Promise.all([getDetail(), getVideos(), getCredits()]).then((results) => {
+      setItem(results[0].data);
+      setTrailer(results[1].data.results[0]);
+      setCredits(results[2].data.cast);
+    });
     // eslint-disable-next-line
   }, [mediaType, id]);
 
-  const getDetail = async () => {
-    const response = await tmdbApi.getDetail(mediaType, id);
-    setItem(response.data);
-  };
-
-  const getVideos = async () => {
-    const response = await tmdbApi.getVideos(mediaType, id);
-    setTrailer(response.data.results[0]);
-  };
-
-  const getCredits = async () => {
-    const response = await tmdbApi.getCredits(mediaType, id);
-    setCredits(response.data.cast);
-  };
+  const getDetail = () => tmdbApi.getDetail(mediaType, id);
+  const getVideos = () => tmdbApi.getVideos(mediaType, id);
+  const getCredits = () => tmdbApi.getCredits(mediaType, id);
 
   return (
     <>
@@ -61,11 +52,6 @@ const Detail = ({ mediaType }) => {
             </div>
             <div className="info mt-4 flex items-center gap-2 text-sm md:gap-4">
               <span className=" tracking-widest">
-                {/* {(() => {
-                  const year = item?.release_date || item?.first_air_date;
-                  const date = year ? new Date(year) : null;
-                  return date ? date.getFullYear() : "N/A";
-                })()} */}
                 {item?.release_date || item?.first_air_date}
               </span>
               <span className="flex items-center gap-2">
