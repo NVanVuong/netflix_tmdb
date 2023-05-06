@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import netflixLogo from "../assets/netflix-icon.png";
 import bg from "../assets/footer-bg.jpg";
@@ -42,13 +41,12 @@ const Footer = () => {
         </div>
         <div className="mb-4 grid select-none grid-cols-2 gap-x-8 gap-y-3 sm:grid-cols-3 md:gap-x-10 lg:grid-cols-4 lg:gap-x-14 xl:gap-x-16">
           {footerLinks.map((footerLink, index) => (
-            <Link
+            <li
               key={index}
-              className="text-base text-light-gray transition-colors duration-500 hover:text-dark-gray"
-              to="/"
+              className="list-none text-base text-light-gray transition-colors duration-500 hover:text-dark-gray"
             >
               {footerLink}
-            </Link>
+            </li>
           ))}
         </div>
         <span className="select-none text-base text-misty-gray">

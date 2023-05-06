@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from './components/ScrollToTop';
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Loading from "./components/Loading";
@@ -12,6 +13,7 @@ const Detail = lazy(() => import("./pages/Detail"));
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route
@@ -42,7 +44,7 @@ function App() {
           path="/movie"
           element={
             <Suspense fallback={<Loading />}>
-              <MediaList media_type="movie" />
+              <MediaList mediaType="movie" />
             </Suspense>
           }
         />
@@ -50,7 +52,7 @@ function App() {
           path="/tv"
           element={
             <Suspense fallback={<Loading />}>
-              <MediaList media_type="tv" />
+              <MediaList mediaType="tv" />
             </Suspense>
           }
         />
