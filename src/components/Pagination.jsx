@@ -56,10 +56,10 @@ function Pagination({ items, totalPages, currentPage, setCurrentPage }) {
   };
 
   return (
-    <ul className="flex h-10 w-fit font-medium text-gray-500 md:bottom-6">
+    <ul className="flex h-10 w-fit font-medium text-white md:bottom-6">
       <li
         className={`${
-          currentPage === 1 && "pointer-events-none text-gray-300"
+          currentPage === 1 && "pointer-events-none text-gray-500"
         } mx-1 flex h-10 cursor-pointer rounded-md px-3 py-2 transition duration-300  hover:text-[#e50914] hover:ring-4 hover:ring-[#e50914c3] hover:ring-opacity-70`}
         onClick={() => setCurrentPage(currentPage - 1)}
       >
@@ -68,7 +68,7 @@ function Pagination({ items, totalPages, currentPage, setCurrentPage }) {
       <>{renderPageNumbers()}</>
       <li
         className={`${
-          currentPage === totalPages && "pointer-events-none text-gray-300"
+          currentPage === totalPages && "pointer-events-none text-gray-500"
         } mx-1 flex h-10 cursor-pointer rounded-md  px-3 py-2 transition duration-300 hover:text-[#e50914] hover:ring-4 hover:ring-[#e50914c3] hover:ring-opacity-70`}
         onClick={() => setCurrentPage(currentPage + 1)}
       >
